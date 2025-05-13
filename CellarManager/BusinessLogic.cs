@@ -59,5 +59,20 @@ namespace CellarManager
         {
             return Beverages;
         }
+
+        public void DeleteBeverage(int beverageIndex)
+        {
+            var index = beverageIndex - 1;
+            if (index < 0 || index >= Beverages.Count)
+            {
+                Console.WriteLine("Indice non valido");
+                return;
+            }
+
+            Beverages.RemoveAt(index);
+            Console.WriteLine("Bevanda eliminata correttamente!!");
+        }
+
+      
     }
 }

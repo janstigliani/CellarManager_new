@@ -36,7 +36,9 @@ namespace CellarManager
                 Console.WriteLine("1. Add Beer");
                 Console.WriteLine("2. Add Wine");
                 Console.WriteLine("3. List Beverages");
-                Console.WriteLine("4. Exit");
+                Console.WriteLine("4. Delete Beverage");
+                Console.WriteLine("5. Search Beverage");  
+                Console.WriteLine("6. Exit");
                 Console.Write("Please select an option: ");
                 string? input = Console.ReadLine();
                 switch (input)
@@ -51,6 +53,12 @@ namespace CellarManager
                         ListBeverages();
                         break;
                     case "4":
+                        DeleteBeverage();
+                        break;
+                    case "5":
+                        Search();
+                        break;
+                    case "6":
                         return;
                     default:
                         Console.WriteLine("Invalid option, please try again.");
@@ -58,6 +66,8 @@ namespace CellarManager
                 }
             }
         }
+
+      
 
         private void AddBeer()
         {
@@ -146,6 +156,37 @@ namespace CellarManager
             }
 
         }
+
+
+        private void DeleteBeverage()
+        {
+            Console.WriteLine("Inserisci il numero della bevanda da eliminare");
+            var res = int.TryParse(Console.ReadLine(), out int index) ;
+            if (res)
+            {
+                _logic.DeleteBeverage(index);
+            }
+        }
+
+        private void Search()
+        {
+            Console.WriteLine("Inserisci il nome della bevanda da ricercare");
+            var name = Console.ReadLine();
+            var res = _logic.GetBeverages().Where(b => b.Name.ToLower().Contains(name.ToLower())).ToList();
+            if (res.Count == 0)
+            {
+                Console.WriteLine("Nessun risultato trovato");
+            }
+            else
+            {
+                Console.WriteLine("Risultati trovati:");
+                foreach (var item in res)
+                {
+                    Console.WriteLine(item.ToString());
+                }
+            }
+        }
+
     }
 
     //class Animal

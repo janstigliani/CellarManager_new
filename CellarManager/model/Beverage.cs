@@ -8,6 +8,7 @@ namespace CellarManager.model
 {
     internal class Beverage
     {
+        //public int Id { get; set; } 
         public required string Name { get; set; }
 
         private string? _country;

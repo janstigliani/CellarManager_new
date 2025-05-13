@@ -11,6 +11,10 @@ namespace CellarManager
     {
         public List<Beverage> LoadAllBeverages()
         {
+            if (!File.Exists("beverages.csv"))
+            {
+                return new List<Beverage>();
+            }
             string[] lines = File.ReadAllLines("beverages.csv");
             List<Beverage> beverages = new List<Beverage>();
             for (int i = 1; i < lines.Length; i++)
@@ -58,3 +62,5 @@ namespace CellarManager
         }
     }
 }
+
+
