@@ -71,8 +71,8 @@ namespace CellarManager
 
             Beverages.RemoveAt(index);
             Console.WriteLine("Bevanda eliminata correttamente!!");
+            _storage.SaveAllBeverages(Beverages);
         }
 
-      
     }
 }

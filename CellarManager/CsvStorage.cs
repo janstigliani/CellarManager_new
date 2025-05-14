@@ -42,7 +42,7 @@ namespace CellarManager
                         Country = parts[3],
                         Year = int.Parse(parts[4]),
                         Type = (WineType)Enum.Parse(typeof(WineType), parts[5]),
-                        Grape = parts[6]
+                        Grape = parts[7]
                     };
                     beverages.Add(wine);
                 }
